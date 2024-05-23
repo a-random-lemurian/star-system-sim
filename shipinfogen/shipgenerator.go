@@ -2,7 +2,6 @@ package shipinfogen
 
 import (
 	"lemuria/spaceport/shipnamegen"
-	"log"
 )
 
 type ShipGenerator struct {
@@ -16,7 +15,6 @@ func (sg ShipGenerator) GenerateName() string {
 }
 
 func (sg ShipGenerator) GenerateShip() Ship {
-	log.Printf("F")
 	sg.shipsSoFar++
 	return Ship{
 		sig_incr_id: sg.shipsSoFar,
