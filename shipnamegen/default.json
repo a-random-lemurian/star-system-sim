@@ -1,0 +1,19 @@
+{
+    "phrases": {
+        "intellectuals": [
+            {
+                "word": [
+                    "Aristotle",
+                    "Aristarchus",
+                    "Archimedes",
+                    "Attenborough"
+                ]
+            }
+        ],
+        "personsmart": [
+            { "word":   ["A person like "] },
+            { "phrase": ["intellectuals"] },
+            { "word":   [" is smart!"] }
+        ]
+    }
+}
