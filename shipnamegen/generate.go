@@ -7,7 +7,7 @@ import (
 // TODO: prevent infinite recursion
 // TODO: weighted phrases
 
-func (ps PhraseSet) GenerateString(name string) string {
+func (ps *PhraseSet) GenerateString(name string) string {
 	var out string = ""
 	for _, v := range ps.GetPhrase(name).Fragments {
 		if v.Words != nil {

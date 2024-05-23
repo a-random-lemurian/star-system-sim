@@ -14,6 +14,6 @@ func fatal(errmsg string) {
 	log.Fatal(fmt.Sprintf("err: %s \n %s", errmsg, strace))
 }
 
-func (ps PhraseSet) GetPhrase(name string) Phrase {
+func (ps *PhraseSet) GetPhrase(name string) Phrase {
 	return ps.Phrases[name]
 }

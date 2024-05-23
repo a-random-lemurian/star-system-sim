@@ -10,11 +10,11 @@ type ShipGenerator struct {
 	phraseName string
 }
 
-func (sg ShipGenerator) GenerateName() string {
+func (sg *ShipGenerator) GenerateName() string {
 	return sg.names.GenerateString(sg.phraseName)
 }
 
-func (sg ShipGenerator) GenerateShip() Ship {
+func (sg *ShipGenerator) GenerateShip() Ship {
 	sg.shipsSoFar++
 	return Ship{
 		sig_incr_id: sg.shipsSoFar,
