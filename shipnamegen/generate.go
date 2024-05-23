@@ -4,6 +4,8 @@ import (
 	"math/rand"
 )
 
+// TODO: prevent infinite recursion
+
 func (ps PhraseSet) GenerateString(name string) string {
 	var out string = ""
 	for _, v := range ps.GetPhrase(name).Fragments {
