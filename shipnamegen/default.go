@@ -13,7 +13,7 @@ func getPackagePath() string {
 	return filepath.Dir(filename)
 }
 
-func DefaultPhraseSet() (PhraseSet, error) {
+func DefaultPhraseSet() PhraseSet {
 	defaultFilename := filepath.Join(getPackagePath(), "default.json")
 	data, err := os.ReadFile(defaultFilename)
 	if err != nil {
@@ -23,5 +23,5 @@ func DefaultPhraseSet() (PhraseSet, error) {
 	var phrases PhraseSet
 	phrases, err = jsonToPhraseSet(data)
 
-	return phrases, err
+	return phrases
 }
