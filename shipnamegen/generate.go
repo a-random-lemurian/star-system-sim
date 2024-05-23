@@ -5,6 +5,7 @@ import (
 )
 
 // TODO: prevent infinite recursion
+// TODO: weighted phrases
 
 func (ps PhraseSet) GenerateString(name string) string {
 	var out string = ""
