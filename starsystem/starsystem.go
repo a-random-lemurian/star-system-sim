@@ -28,7 +28,7 @@ func CreateTravelingShip(ship *shipinfogen.Ship) *TravelingShip {
 	}
 }
 
-func CreateStarSystem(name string, posX int64, posY int64) *StarSystem {
+func CreateStarSystem(name string, posX float64, posY float64) *StarSystem {
 	return &StarSystem{
 		name:           name,
 		shipEntryPoint: make(chan *TravelingShip),

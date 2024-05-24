@@ -12,10 +12,10 @@ func main() {
 
     sg := shipinfogen.CreateDefaultGenerator()
 
-    sol := starsystem.CreateStarSystem("Sol", 0, 0)
-    acen := starsystem.CreateStarSystem("Alpha Centauri", 4, 1)
-    barnard := starsystem.CreateStarSystem("Barnard's Star", -3, 0)
-    groom34 := starsystem.CreateStarSystem("Groombridge 34", 5, -3)
+    sol     := starsystem.CreateStarSystem("Sol",             0,     0)
+    acen    := starsystem.CreateStarSystem("Alpha Centauri",  4.01,  1.53)
+    barnard := starsystem.CreateStarSystem("Barnard's Star", -3.18,  0.44)
+    groom34 := starsystem.CreateStarSystem("Groombridge 34",  5.14, -2.87)
 
     sol.Connect(acen)
     acen.Connect(sol)

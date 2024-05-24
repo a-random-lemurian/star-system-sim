@@ -3,8 +3,8 @@ package starsystem
 import "math"
 
 type Point struct {
-	x int64
-	y int64
+	x float64
+	y float64
 }
 
 func Distance(p1, p2 Point) float64 {
