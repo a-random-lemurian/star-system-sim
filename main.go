@@ -44,7 +44,7 @@ func main() {
         wg.Done()
     }()
 
-    for i := 0; i < 10000; i++ {
+    for i := 0; i < 100; i++ {
 		go func() {
 			ship := sg.GenerateShip()
 			log.Printf("Init ship %v", ship)
