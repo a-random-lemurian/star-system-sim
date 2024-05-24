@@ -52,8 +52,8 @@ func (sys *StarSystem) receiveShip(incoming *TravelingShip) {
 	if incoming.travels != 0 {
 		log.Printf("%v: %v -> %v",
 		incoming.ship.String(),
-		sys.name,
-		incoming.lastSystem.name)
+		incoming.lastSystem.name,
+		sys.name)
 	}
 	incoming.travels++
 }
