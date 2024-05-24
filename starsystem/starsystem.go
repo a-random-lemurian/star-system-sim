@@ -38,7 +38,6 @@ func CreateStarSystem(name string) *StarSystem {
 func (sys *StarSystem) randomConnected() *StarSystem {
 	for {
 		newSystem := sys.connections[rand.Intn(len(sys.connections))]
-		log.Printf("Choosing a star system: %v / %v", newSystem, sys)
 		if newSystem != sys {
 			return newSystem
 		}
