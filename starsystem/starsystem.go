@@ -11,8 +11,7 @@ import (
 type StarSystem struct {
 	name           string
 	shipEntryPoint chan *TravelingShip
-	x              int64
-	y              int64
+	position       Point
 	connections    []*StarSystem
 }
 
