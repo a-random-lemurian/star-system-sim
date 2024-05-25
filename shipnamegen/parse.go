@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 )
 
 func makeStringSlice(interf interface{}) []string {
@@ -69,4 +70,17 @@ func jsonToPhraseSet(jsonText []byte) (PhraseSet, error) {
 	}
 
 	return pset, nil
+}
+
+// Open a .json file containing phrases, and convert it into a PhraseSet.
+func OpenPhraseFile(file string) PhraseSet {
+	data, err := os.ReadFile(file)
+	if err != nil {
+		log.Fatal(fmt.Sprintf("Failed to read file %s", file))
+	}
+
+	var phrases PhraseSet
+	phrases, err = jsonToPhraseSet(data)
+
+	return phrases
 }
