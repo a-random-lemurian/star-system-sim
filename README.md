@@ -4,7 +4,8 @@ Also known as `spaceport`, though for some weird reason there is a name
 discrepancy.
 
 It is a library that simulates the flow of ships through a series of star
-systems.
+systems. With economics involved; ships trudge along the stars moving what
+needs to be moved.
 
 ## Architecture
 
