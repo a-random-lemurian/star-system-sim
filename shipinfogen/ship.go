@@ -5,8 +5,10 @@ import (
 )
 
 type Ship struct {
-	name        string
-	sig_incr_id uint64
+	name          string
+	sig_incr_id   uint64
+	cargoCapacity uint64
+	cargoManifest map[string]uint64
 }
 
 func (s *Ship) String() string {
