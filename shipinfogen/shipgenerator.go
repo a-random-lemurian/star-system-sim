@@ -17,8 +17,9 @@ func (sg *ShipGenerator) GenerateName() string {
 func (sg *ShipGenerator) GenerateShip() Ship {
 	sg.shipsSoFar++
 	return Ship{
-		sig_incr_id: sg.shipsSoFar,
-		name:        sg.GenerateName(),
+		sig_incr_id:   sg.shipsSoFar,
+		name:          sg.GenerateName(),
+		cargoCapacity: 10000,
 	}
 }
 
