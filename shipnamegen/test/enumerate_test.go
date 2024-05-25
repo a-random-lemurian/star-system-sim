@@ -27,7 +27,7 @@ func getTestPhraseSet() string {
 	return filepath.Join(getPackagePath(), "test.json")
 }
 
-func TestSomeFunction(t *testing.T) {
+func TestEnumerate(t *testing.T) {
 	phrase := shipnamegen.OpenPhraseFile(getTestPhraseSet())
 
 	for _, tcase := range testCases {
