@@ -30,3 +30,17 @@ func TestEnumerate(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkEnumerate(b *testing.B) {
+	phrase := shipnamegen.DefaultPhraseSet()
+	for i := 0; i < b.N; i++ {
+        phrase.Enumerate("shipname")
+    }
+}
+
+func BenchmarkGenerate(b *testing.B) {
+	phrase := shipnamegen.DefaultPhraseSet()
+	for i := 0; i < b.N; i++ {
+		phrase.GenerateString("shipname")
+	}
+}
