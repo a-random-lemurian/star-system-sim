@@ -20,13 +20,13 @@ func TestEnumerate(t *testing.T) {
 	phrase := shipnamegen.OpenPhraseFile(getTestPhraseSet())
 
 	for _, tcase := range testCases {
-		permuts := phrase.Enumerate(tcase.phrase);
+		permuts := phrase.Enumerate(tcase.phrase)
 		phraseTestResultString := fmt.Sprintf("phrase '%v': got %v - expected %v",
 			tcase.phrase, permuts, tcase.expected)
 		if permuts != int64(tcase.expected) {
 			t.Fatalf("bad  -- %v", phraseTestResultString)
 		} else {
-			t.Logf(  "good -- %v", phraseTestResultString)
+			t.Logf("good -- %v", phraseTestResultString)
 		}
 	}
 }

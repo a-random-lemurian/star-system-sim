@@ -7,7 +7,7 @@ import (
 )
 
 type phrasePermuts struct {
-	phrase string
+	phrase  string
 	permuts int64
 }
 
@@ -20,14 +20,14 @@ func (p byPhraseName) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
 func main() {
 	dps := shipnamegen.DefaultPhraseSet()
 	fmt.Printf("--- TOTAL POSSIBILITIES ---\n")
-	fmt.Printf("%-20s   %-20s","phrase","possibilities")
+	fmt.Printf("%-20s   %-20s", "phrase", "possibilities")
 	fmt.Printf("\n------------------------------------\n")
 
 	permuts := make([]phrasePermuts, 0)
 
 	for phrase := range dps.Phrases {
 		permuts = append(permuts, phrasePermuts{
-			phrase: phrase,
+			phrase:  phrase,
 			permuts: dps.Enumerate(phrase)})
 	}
 

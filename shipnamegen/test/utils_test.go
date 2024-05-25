@@ -1,8 +1,8 @@
 package shipnamegen_test
 
 import (
-	"runtime"
 	"path/filepath"
+	"runtime"
 )
 
 func getPackagePath() string {

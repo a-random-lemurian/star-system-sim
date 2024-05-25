@@ -41,12 +41,12 @@ func (sys *StarSystem) sendShip(ship *TravelingShip, to *StarSystem) {
 func (sys *StarSystem) receiveShip(incoming *TravelingShip) {
 	if incoming.travels != 0 {
 		log.Printf("%v: %v -> %v",
-		incoming.ship.String(),
-		incoming.lastSystem.name,
-		sys.name)
+			incoming.ship.String(),
+			incoming.lastSystem.name,
+			sys.name)
 	} else {
 		log.Printf("%v: Spawned in %v.",
-		incoming.ship.String(), sys.name)
+			incoming.ship.String(), sys.name)
 	}
 	incoming.travels++
 }

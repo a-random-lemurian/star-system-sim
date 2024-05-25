@@ -6,15 +6,15 @@ import (
 )
 
 type stringGenRecursion struct {
-	phraseCounts map[string]int
+	phraseCounts   map[string]int
 	totalRecursion int
-	phrasePath []string
+	phrasePath     []string
 }
 
 func (sgr *stringGenRecursion) createRecursionPath() string {
 	str := ""
 	for _, step := range sgr.phrasePath {
-		str += "`"+ step + "`" + "->"
+		str += "`" + step + "`" + "->"
 	}
 	return str
 }
