@@ -21,21 +21,6 @@ type TravelingShip struct {
 	travels    int64
 }
 
-func CreateTravelingShip(ship *shipinfogen.Ship) *TravelingShip {
-	return &TravelingShip{
-		lastSystem: nil,
-		ship:       ship,
-	}
-}
-
-func CreateStarSystem(name string, posX float64, posY float64) *StarSystem {
-	return &StarSystem{
-		name:           name,
-		shipEntryPoint: make(chan *TravelingShip),
-		position: Point{posX, posY},
-	}
-}
-
 func (sys *StarSystem) randomConnected() *StarSystem {
 	for {
 		newSystem := sys.connections[rand.Intn(len(sys.connections))]
