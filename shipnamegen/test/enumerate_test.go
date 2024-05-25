@@ -3,8 +3,6 @@ package shipnamegen_test
 import (
 	"fmt"
 	"lemuria/spaceport/shipnamegen"
-	"path/filepath"
-	"runtime"
 	"testing"
 )
 
@@ -16,15 +14,6 @@ type testCase struct {
 var testCases = []testCase{
 	{phrase: "3 possibilities", expected: 3},
 	{phrase: "3 possibilities with embedded phrase", expected: 3},
-}
-
-func getPackagePath() string {
-	_, filename, _, _ := runtime.Caller(0)
-	return filepath.Dir(filename)
-}
-
-func getTestPhraseSet() string {
-	return filepath.Join(getPackagePath(), "test.json")
 }
 
 func TestEnumerate(t *testing.T) {
