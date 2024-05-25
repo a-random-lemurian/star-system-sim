@@ -20,6 +20,14 @@
                     "3 possibilities"
                 ]
             }
+        ],
+
+        "bad recursion": [
+            {
+                "phrase": [
+                    "bad recursion"
+                ]
+            }
         ]
     }
 
