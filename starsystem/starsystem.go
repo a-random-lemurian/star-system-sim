@@ -47,7 +47,8 @@ func (sys *StarSystem) randomConnected() *StarSystem {
 
 func (sys *StarSystem) sendShip(ship *TravelingShip, to *StarSystem) {
 	dist := Distance(sys.position, to.position)
-	log.Printf("%v: Travel time %v secs -> %v", ship.ship.String(), dist, to.name)
+	log.Printf("%v: From %v, travel for %.4f secs -> %v",
+		ship.ship.String(), sys.name, dist, to.name)
 	time.Sleep(time.Duration(dist) * time.Second)
 	to.shipEntryPoint <- ship
 }
