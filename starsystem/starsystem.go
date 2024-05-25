@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// A star system.
 type StarSystem struct {
 	name           string
 	shipEntryPoint chan *TravelingShip
@@ -15,12 +16,17 @@ type StarSystem struct {
 	connections    []*StarSystem
 }
 
+// A TravelingShip is a wrapper for shipinfogen.Ship.
+//
+// This is used to prevent circular dependencies, as ships need star system
+// specific information.
 type TravelingShip struct {
 	lastSystem *StarSystem
 	ship       *shipinfogen.Ship
 	travels    int64
 }
 
+// Pick a random connected star system.
 func (sys *StarSystem) randomConnected() *StarSystem {
 	for {
 		newSystem := sys.connections[rand.Intn(len(sys.connections))]
@@ -30,6 +36,7 @@ func (sys *StarSystem) randomConnected() *StarSystem {
 	}
 }
 
+// Bring a ship to another system.
 func (sys *StarSystem) sendShip(ship *TravelingShip, to *StarSystem) {
 	dist := Distance(sys.position, to.position)
 	log.Printf("%v: From %v, travel for %.4f secs -> %v",
@@ -38,6 +45,7 @@ func (sys *StarSystem) sendShip(ship *TravelingShip, to *StarSystem) {
 	to.shipEntryPoint <- ship
 }
 
+// Print output logging a ship's entry into a star system.
 func (sys *StarSystem) receiveShip(incoming *TravelingShip) {
 	if incoming.travels != 0 {
 		log.Printf("%v: %v -> %v",
@@ -51,21 +59,27 @@ func (sys *StarSystem) receiveShip(incoming *TravelingShip) {
 	incoming.travels++
 }
 
+// Internal: Simulate the action of a ship while inside a star system.
 func (sys *StarSystem) processShip(incoming *TravelingShip) {
 	destination := sys.randomConnected()
 	incoming.lastSystem = sys
 	sys.sendShip(incoming, destination)
 }
 
+// Establish a hyperlane connection between two systems.
 func (sys *StarSystem) Connect(in *StarSystem) {
 	sys.connections = append(sys.connections, in)
 }
 
+// Insert a new ship in the simulation.
 func (sys *StarSystem) AddShip(incoming *TravelingShip) {
 	incoming.lastSystem = sys
 	sys.shipEntryPoint <- incoming
 }
 
+// Start performing the duty of a star system. It will begin taking ships in
+// from its shipEntryPoint channel and simulate their actions, which at the
+// moment consists primarily of sending them to other star systems.
 func (sys *StarSystem) Duty(wg *sync.WaitGroup) {
 	defer wg.Done()
 	for {
