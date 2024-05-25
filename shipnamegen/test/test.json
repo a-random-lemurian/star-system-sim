@@ -1,0 +1,26 @@
+{
+    "phrases": {
+        "3 possibilities": [
+            {
+                "word": [
+                    "one",
+                    "two",
+                    "three"
+                ]
+            }
+        ],
+        "3 possibilities with embedded phrase": [
+            {
+                "word": [
+                    "one "
+                ]
+            },
+            {
+                "phrase": [
+                    "3 possibilities"
+                ]
+            }
+        ]
+    }
+
+}
