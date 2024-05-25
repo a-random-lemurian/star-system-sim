@@ -44,6 +44,9 @@ func (sys *StarSystem) receiveShip(incoming *TravelingShip) {
 		incoming.ship.String(),
 		incoming.lastSystem.name,
 		sys.name)
+	} else {
+		log.Printf("%v: Spawned in %v.",
+		incoming.ship.String(), sys.name)
 	}
 	incoming.travels++
 }
