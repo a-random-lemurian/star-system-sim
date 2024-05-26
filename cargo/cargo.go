@@ -32,7 +32,7 @@ func (c *Cargo) FreeSpace() uint64 {
 }
 
 func (c *Cargo) LoadCargo(cargo string, units uint64) error {
-	if units > c.FreeSpace() {
+	if units > c.FreeSpace() && c.IsLimited() {
 		return errors.New("Attempt to load too much cargo")
 	}
 
