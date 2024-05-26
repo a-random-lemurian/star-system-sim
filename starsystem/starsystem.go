@@ -1,6 +1,7 @@
 package starsystem
 
 import (
+	"lemuria/spaceport/cargo"
 	"lemuria/spaceport/shipinfogen"
 	"log"
 	"math/rand"
@@ -14,6 +15,8 @@ type StarSystem struct {
 	shipEntryPoint chan *TravelingShip
 	position       Point
 	connections    []*StarSystem
+	cargo          cargo.Cargo
+	industries     []*Industry
 }
 
 // A TravelingShip is a wrapper for shipinfogen.Ship.
@@ -82,6 +85,17 @@ func (sys *StarSystem) AddShip(incoming *TravelingShip) {
 // moment consists primarily of sending them to other star systems.
 func (sys *StarSystem) Duty(wg *sync.WaitGroup) {
 	defer wg.Done()
+	go func() {
+		if len(sys.industries) == 0 {
+			return
+		}
+		for {
+			sys.SimulateProduction()
+			time.Sleep(time.Duration(1) * time.Second)
+			log.Printf("%v: simulating production", sys.name)
+		}
+	}()
+
 	for {
 		select {
 		case ship := <-sys.shipEntryPoint:

@@ -1,6 +1,9 @@
 package starsystem
 
-import "lemuria/spaceport/shipinfogen"
+import (
+	"lemuria/spaceport/cargo"
+	"lemuria/spaceport/shipinfogen"
+)
 
 // Create a TravelingShip.
 func CreateTravelingShip(ship *shipinfogen.Ship) *TravelingShip {
@@ -16,5 +19,6 @@ func CreateStarSystem(name string, posX float64, posY float64) *StarSystem {
 		name:           name,
 		shipEntryPoint: make(chan *TravelingShip),
 		position:       Point{posX, posY},
+		cargo:          cargo.CreateCargoStorage(0),
 	}
 }
