@@ -29,8 +29,9 @@ func (sys *StarSystem) AddIndustry(ind Industry) {
 
 func (sys *StarSystem) SimulateProduction() {
 	for _, industry := range sys.industries {
-		if sys.cargo.AtomicCargoTransaction(
-			industry.outputs, industry.inputs) != nil {
+		if err := sys.cargo.AtomicCargoTransaction(
+			industry.outputs, industry.inputs); err != nil {
+			log.Printf("Error: %v", err)
 			log.Printf("Warning: Not enough cargo in system!")
 		}
 	}
