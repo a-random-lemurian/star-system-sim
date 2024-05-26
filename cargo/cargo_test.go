@@ -46,3 +46,13 @@ func TestUnloadCargoWithError(t *testing.T) {
 		}
 	}
 }
+
+func TestAtomicCargoTransaction(t *testing.T) {
+	cargo := makeCargoStore()
+	deposits := make(map[string]uint64)
+	deposits["plutonium"] = 10
+	cargo.AtomicCargoTransaction(deposits, nil)
+	if cargo.CheckCargo("plutonium") != 10 {
+		t.Errorf("Failed to do atomic cargo transaction: got %v", cargo)
+	}
+}
