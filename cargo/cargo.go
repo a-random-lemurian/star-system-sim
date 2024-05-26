@@ -27,7 +27,7 @@ func (c *Cargo) UsedCargoSpace() uint64 {
 	return uint64(total_cargo)
 }
 
-func (c *Cargo) LoadCargo(cargo string, units uint64) (error) {
+func (c *Cargo) LoadCargo(cargo string, units uint64) error {
 	if units > c.UsedCargoSpace() {
 		return errors.New("Attempt to load too much cargo")
 	}
@@ -54,9 +54,78 @@ func (c *Cargo) CheckCargo(cargo string) uint64 {
 func (c *Cargo) UnloadCargo(cargo string, units uint64) (uint64, error) {
 	withdrawn := uint64(0)
 	var err error = nil
-	if (units > c.CheckCargo(cargo)) {
-		withdrawn = c.cargoManifest[cargo] 
+	if units > c.CheckCargo(cargo) {
+		withdrawn = c.cargoManifest[cargo]
 	}
 
 	return withdrawn, err
+}
+
+type transactionType int
+
+const (
+	withdraw transactionType = iota
+	deposit
+)
+
+type atomicTransaction struct {
+	Cargo  string
+	Amount uint64
+	Type  transactionType
+}
+
+func (c *Cargo) atomicCargoRollback(changes []atomicTransaction) {
+	for _, change := range changes {
+		switch change.Type {
+		case withdraw:
+			c.LoadCargo(change.Cargo, change.Amount)
+		case deposit:
+			c.UnloadCargo(change.Cargo, change.Amount)
+		}
+	}
+}
+
+// Perform multiple cargo transactions at once, rolling it all back if one
+// fails.
+func (c *Cargo) AtomicCargoTransaction(deposits map[string]uint64,
+	withdrawals map[string]uint64) error {
+	alterations := make([]atomicTransaction, 0, len(deposits)+len(withdrawals))
+
+	// Helper function to perform cargo transaction and handle alterations
+	performTransaction := func(cargo string, amount uint64,
+		transactionType transactionType) error {
+		var err error
+		switch transactionType {
+		case deposit:
+			err = c.LoadCargo(cargo, amount)
+		case withdraw:
+			_, err = c.UnloadCargo(cargo, amount)
+		}
+		if err != nil {
+			c.atomicCargoRollback(alterations)
+			return err
+		}
+		alterations = append(alterations, atomicTransaction{
+			Cargo:  cargo,
+			Amount: amount,
+			Type:  transactionType,
+		})
+		return nil
+	}
+
+	// Process deposits
+	for cargo, amount := range deposits {
+		if err := performTransaction(cargo, amount, deposit); err != nil {
+			return err
+		}
+	}
+
+	// Process withdrawals
+	for cargo, amount := range withdrawals {
+		if err := performTransaction(cargo, amount, withdraw); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
