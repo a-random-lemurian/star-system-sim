@@ -2,13 +2,13 @@ package shipinfogen
 
 import (
 	"fmt"
+	"lemuria/spaceport/cargo"
 )
 
 type Ship struct {
 	name          string
 	sig_incr_id   uint64
-	cargoCapacity uint64
-	cargoManifest map[string]uint64
+	Cargo         cargo.Cargo
 }
 
 func (s *Ship) String() string {

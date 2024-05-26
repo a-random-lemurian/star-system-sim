@@ -1,6 +1,7 @@
 package shipinfogen
 
 import (
+	"lemuria/spaceport/cargo"
 	"lemuria/spaceport/shipnamegen"
 )
 
@@ -19,7 +20,7 @@ func (sg *ShipGenerator) GenerateShip() Ship {
 	return Ship{
 		sig_incr_id:   sg.shipsSoFar,
 		name:          sg.GenerateName(),
-		cargoCapacity: 10000,
+		Cargo:         cargo.CreateCargoStorage(10000),
 	}
 }
 
