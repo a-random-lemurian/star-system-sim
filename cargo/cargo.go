@@ -27,8 +27,12 @@ func (c *Cargo) UsedCargoSpace() uint64 {
 	return uint64(total_cargo)
 }
 
+func (c *Cargo) FreeSpace() uint64 {
+	return c.cargoCapacity - c.UsedCargoSpace()
+}
+
 func (c *Cargo) LoadCargo(cargo string, units uint64) error {
-	if units > c.UsedCargoSpace() {
+	if units > c.FreeSpace() {
 		return errors.New("Attempt to load too much cargo")
 	}
 
