@@ -91,7 +91,6 @@ func (c *Cargo) AtomicCargoTransaction(deposits map[string]uint64,
 	withdrawals map[string]uint64) error {
 	alterations := make([]atomicTransaction, 0, len(deposits)+len(withdrawals))
 
-	// Helper function to perform cargo transaction and handle alterations
 	performTransaction := func(cargo string, amount uint64,
 		transactionType transactionType) error {
 		var err error
@@ -113,14 +112,12 @@ func (c *Cargo) AtomicCargoTransaction(deposits map[string]uint64,
 		return nil
 	}
 
-	// Process deposits
 	for cargo, amount := range deposits {
 		if err := performTransaction(cargo, amount, deposit); err != nil {
 			return err
 		}
 	}
 
-	// Process withdrawals
 	for cargo, amount := range withdrawals {
 		if err := performTransaction(cargo, amount, withdraw); err != nil {
 			return err
