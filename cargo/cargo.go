@@ -16,7 +16,7 @@ func CreateCargoStorage(maxCapacity uint64) Cargo {
 }
 
 func (c *Cargo) IsLimited() bool {
-	return c.cargoCapacity == 0
+	return c.cargoCapacity != 0
 }
 
 func (c *Cargo) UsedCargoSpace() uint64 {
