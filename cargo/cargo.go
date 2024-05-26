@@ -36,6 +36,8 @@ func (c *Cargo) LoadCargo(cargo string, units uint64) error {
 		return errors.New("Attempt to load too much cargo")
 	}
 
+	c.cargoManifest[cargo] += units
+
 	return nil
 }
 
