@@ -12,6 +12,7 @@ needs to be moved.
 |---|---|
 | Module | Purpose
 |---|---|
+| cargo | Cargo-related services for ships and star systems.
 | enumerate | Simply allows you to view all possible default name options.
 | metrics | Reports on all that is occurring in the simulation.
 | shipinfogen | Services for creating ships.
