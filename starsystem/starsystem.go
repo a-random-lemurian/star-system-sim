@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/a-randon-lemurian/star-system-sim/shipinfogen"
+	"github.com/a-random-lemurian/star-system-sim/shipinfogen"
 )
 
 // A star system.

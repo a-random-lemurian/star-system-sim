@@ -1,3 +1,3 @@
-module github.com/a-randon-lemurian/star-system-sim
+module github.com/a-random-lemurian/star-system-sim
 
 go 1.22.3

@@ -4,8 +4,8 @@ import (
 	"log"
 	"sync"
 
-	"github.com/a-randon-lemurian/star-system-sim/shipinfogen"
-	"github.com/a-randon-lemurian/star-system-sim/starsystem"
+	"github.com/a-random-lemurian/star-system-sim/shipinfogen"
+	"github.com/a-random-lemurian/star-system-sim/starsystem"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/a-randon-lemurian/star-system-sim/shipnamegen"
+	"github.com/a-random-lemurian/star-system-sim/shipnamegen"
 )
 
 func TestRecursion(t *testing.T) {

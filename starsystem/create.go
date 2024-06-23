@@ -1,6 +1,6 @@
 package starsystem
 
-import "github.com/a-randon-lemurian/star-system-sim/shipinfogen"
+import "github.com/a-random-lemurian/star-system-sim/shipinfogen"
 
 // Create a TravelingShip.
 func CreateTravelingShip(ship *shipinfogen.Ship) *TravelingShip {
