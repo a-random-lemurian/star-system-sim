@@ -1,7 +1,7 @@
 package shipinfogen
 
 import (
-	"lemuria/spaceport/shipnamegen"
+	"github.com/a-randon-lemurian/star-system-sim/shipnamegen"
 )
 
 type ShipGenerator struct {

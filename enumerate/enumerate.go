@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"lemuria/spaceport/shipnamegen"
 	"sort"
+
+	"github.com/a-randon-lemurian/star-system-sim/shipnamegen"
 )
 
 type phrasePermuts struct {

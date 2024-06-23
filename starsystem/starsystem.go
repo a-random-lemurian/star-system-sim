@@ -1,11 +1,12 @@
 package starsystem
 
 import (
-	"lemuria/spaceport/shipinfogen"
 	"log"
 	"math/rand"
 	"sync"
 	"time"
+
+	"github.com/a-randon-lemurian/star-system-sim/shipinfogen"
 )
 
 // A star system.

@@ -1,9 +1,10 @@
 package shipnamegen_test
 
 import (
-	"lemuria/spaceport/shipnamegen"
 	"strings"
 	"testing"
+
+	"github.com/a-randon-lemurian/star-system-sim/shipnamegen"
 )
 
 func TestRecursion(t *testing.T) {
